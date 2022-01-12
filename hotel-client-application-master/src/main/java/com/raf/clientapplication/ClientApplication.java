@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import com.raf.clientapplication.view.LoginView;
+import com.raf.clientapplication.view.ManagmentView;
 import com.raf.clientapplication.view.ReservationView;
 
 public class ClientApplication extends JFrame {
@@ -21,7 +22,7 @@ public class ClientApplication extends JFrame {
 		loginView = new LoginView();
 		this.add(loginView, BorderLayout.NORTH);
 
-		secondaryView = new ReservationView();
+		secondaryView = new ManagmentView();
 		this.add(secondaryView, BorderLayout.CENTER);
 
 		this.setVisible(true);
