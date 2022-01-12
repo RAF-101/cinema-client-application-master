@@ -31,9 +31,9 @@ public class UserServiceRestClient {
 		RequestBody body = RequestBody.create(JSON, objectMapper.writeValueAsString(tokenRequestDto));
 
 		Request request = new Request.Builder()
-			.url(URL + "/user/login")
-			.post(body)
-			.build();
+				.url(URL + "/user/login")
+				.post(body)
+				.build();
 
 		Call call = client.newCall(request);
 
@@ -43,6 +43,31 @@ public class UserServiceRestClient {
 			String json = response.body().string();
 			TokenResponseDto dto = objectMapper.readValue(json, TokenResponseDto.class);
 
+			return dto.getToken();
+		}
+
+		throw new RuntimeException("Invalid username or password");
+	}
+
+	public String register(String username, String password) throws IOException {
+
+		TokenRequestDto tokenRequestDto = new TokenRequestDto(username, password);
+
+		RequestBody body = RequestBody.create(JSON, objectMapper.writeValueAsString(tokenRequestDto));
+
+		Request request = new Request.Builder()
+				.url(URL + "/user/register")
+				.post(body)
+				.build();
+
+		Call call = client.newCall(request);
+
+		Response response = call.execute();
+
+		if (response.code() == 200) {
+			String json = response.body().string();
+			TokenResponseDto dto = objectMapper.readValue(json, TokenResponseDto.class);
+			
 			return dto.getToken();
 		}
 

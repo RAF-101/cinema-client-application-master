@@ -45,7 +45,6 @@ public class ReservationView extends JPanel {
 			System.out.println(movieDto);
 			roomTableModel.addRow(new Object[]{movieDto.getTitle(), movieDto.getDescription(), movieDto.getId()});
 		});
-
 	}
 
 	public RoomTableModel getRoomTableModel() {
