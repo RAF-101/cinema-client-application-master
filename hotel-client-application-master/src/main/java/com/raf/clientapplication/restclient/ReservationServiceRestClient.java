@@ -5,7 +5,7 @@ import java.io.IOException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.raf.clientapplication.ClientApplication;
-import com.raf.clientapplication.restclient.dto.MovieListDto;
+import com.raf.clientapplication.restclient.dto.RoomListDto;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
@@ -23,7 +23,7 @@ public class ReservationServiceRestClient {
 	OkHttpClient client = new OkHttpClient();
 	ObjectMapper objectMapper = new ObjectMapper();
 
-	public MovieListDto getMovies() throws IOException {
+	public RoomListDto getMovies() throws IOException {
 
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
@@ -40,7 +40,7 @@ public class ReservationServiceRestClient {
 		if (response.code() == 200) {
 			String json = response.body().string();
 
-			return objectMapper.readValue(json, MovieListDto.class);
+			return objectMapper.readValue(json, RoomListDto.class);
 		}
 
 		throw new RuntimeException();

@@ -7,7 +7,7 @@ import javax.swing.*;
 
 import com.raf.clientapplication.model.RoomTableModel;
 import com.raf.clientapplication.restclient.ReservationServiceRestClient;
-import com.raf.clientapplication.restclient.dto.MovieListDto;
+import com.raf.clientapplication.restclient.dto.RoomListDto;
 
 public class ReservationView extends JPanel {
 
@@ -40,8 +40,8 @@ public class ReservationView extends JPanel {
 	public void init() throws IOException {
 		this.setVisible(true);
 
-		MovieListDto movieListDto = reservationServiceRestClient.getMovies();
-		movieListDto.getContent().forEach(movieDto -> {
+		RoomListDto roomListDto = reservationServiceRestClient.getMovies();
+		roomListDto.getContent().forEach(movieDto -> {
 			System.out.println(movieDto);
 			roomTableModel.addRow(new Object[]{movieDto.getTitle(), movieDto.getDescription(), movieDto.getId()});
 		});

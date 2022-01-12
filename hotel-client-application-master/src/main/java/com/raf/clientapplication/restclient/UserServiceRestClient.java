@@ -81,7 +81,7 @@ public class UserServiceRestClient {
 		RequestBody body = RequestBody.create(JSON, objectMapper.writeValueAsString(tokenRequestDto));
 
 		Request request = new Request.Builder()
-				.url(URL + "/user/registerUser")
+				.url(URL + "/user/registerManager")
 				.post(body)
 				.build();
 

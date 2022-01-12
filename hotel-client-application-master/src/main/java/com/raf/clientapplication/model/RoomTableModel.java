@@ -2,33 +2,33 @@ package com.raf.clientapplication.model;
 
 import javax.swing.table.DefaultTableModel;
 
-import com.raf.clientapplication.restclient.dto.MovieDto;
-import com.raf.clientapplication.restclient.dto.MovieListDto;
+import com.raf.clientapplication.restclient.dto.RoomDto;
+import com.raf.clientapplication.restclient.dto.RoomListDto;
 
 public class RoomTableModel extends DefaultTableModel {
 
 
 	public RoomTableModel() throws IllegalAccessException, NoSuchMethodException {
-		super(new String[]{"Title", "Description"}, 0);
+		super(new String[]{"Broj", "Tip"}, 0);
 	}
 
-	private MovieListDto movieListDto = new MovieListDto();
+	private RoomListDto roomListDto = new RoomListDto();
 
 	@Override
 	public void addRow(Object[] row) {
 		super.addRow(row);
-		MovieDto dto = new MovieDto();
+		RoomDto dto = new RoomDto();
 		dto.setTitle(String.valueOf(row[0]));
 		dto.setDescription(String.valueOf(row[1]));
 		dto.setId(Long.valueOf(String.valueOf(row[2])));
-		movieListDto.getContent().add(dto);
+		roomListDto.getContent().add(dto);
 	}
 
-	public MovieListDto getMovieListDto() {
-		return movieListDto;
+	public RoomListDto getMovieListDto() {
+		return roomListDto;
 	}
 
-	public void setMovieListDto(MovieListDto movieListDto) {
-		this.movieListDto = movieListDto;
+	public void setMovieListDto(RoomListDto roomListDto) {
+		this.roomListDto = roomListDto;
 	}
 }

@@ -1,9 +1,5 @@
 package com.raf.clientapplication.view;
 
-import com.raf.clientapplication.model.RoomTableModel;
-import com.raf.clientapplication.restclient.ReservationServiceRestClient;
-import com.raf.clientapplication.restclient.dto.MovieListDto;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;

@@ -1,16 +1,16 @@
 package com.raf.clientapplication.restclient.dto;
 
-public class MovieDto {
+public class RoomDto {
 
 	private Long id;
 	private String title;
 	private String description;
 
-	public MovieDto() {
+	public RoomDto() {
 
 	}
 
-	public MovieDto(Long id, String title, String description) {
+	public RoomDto(Long id, String title, String description) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
