@@ -11,7 +11,7 @@ public class ClientApplication extends JFrame {
 
 	private String token;
 	private LoginView loginView;
-	private ReservationView secondaryView;
+	private JPanel secondaryView;
 
 	private ClientApplication() throws IllegalAccessException, NoSuchMethodException {
 		this.setTitle("Client Application");
@@ -58,12 +58,13 @@ public class ClientApplication extends JFrame {
 		this.loginView = loginView;
 	}
 
-	public ReservationView getSecondaryView() {
+	public JPanel getSecondaryView() {
 		return secondaryView;
 	}
 
-	public void setSecondaryView(ReservationView secondaryView) {
+	public void setSecondaryView(JPanel secondaryView) {
 		this.secondaryView = secondaryView;
+		this.add(this.secondaryView, BorderLayout.CENTER);
 	}
 
 	public static ClientApplication getInstance() {

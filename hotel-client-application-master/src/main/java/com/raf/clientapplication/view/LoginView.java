@@ -19,7 +19,8 @@ public class LoginView extends JPanel {
 	private JPasswordField passwordInput;
 
 	private JButton loginButton;
-	private JButton registerButton;
+	private JButton registerUserButton;
+	private JButton registerManagerButton;
 	private JButton settingsButton;
 	private JButton manageButton;
 
@@ -41,54 +42,67 @@ public class LoginView extends JPanel {
 		loginButton.addActionListener((event) -> {
 
 			try {
-				//ClientApplication.getInstance().getSecondaryView().init();
-				//String token = userServiceRestClient
-				//	.login(usernameInput.getText(), String.valueOf(passwordInput.getPassword()));
+				String token = userServiceRestClient
+					.login(usernameInput.getText(), String.valueOf(passwordInput.getPassword()));
+				ClientApplication.getInstance().setToken(token);
+				System.out.println(token);
 				this.add(manageButton, BorderLayout.EAST);
 				this.add(settingsButton, BorderLayout.WEST);
 				loginButton.setVisible(false);
-				registerButton.setVisible(false);
-				//ClientApplication.getInstance().setToken(token);
-				//System.out.println(token);
-				ClientApplication.getInstance().getSecondaryView().init();
-				//
+				registerUserButton.setVisible(false);
+				registerManagerButton.setVisible(false);
+				inputPanel.setVisible(false);
+				((ReservationView) ClientApplication.getInstance().getSecondaryView()).init();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		});
 
-		registerButton = new JButton("Register");
-		this.add(registerButton, BorderLayout.WEST);
-		registerButton.addActionListener((event) -> {
+		registerUserButton = new JButton("Register User");
+		this.add(registerUserButton, BorderLayout.WEST);
+		registerUserButton.addActionListener((event) -> {
 
-			try {
-				ClientApplication.getInstance().getSecondaryView().init();
-				//String token = userServiceRestClient
-				//	.login(usernameInput.getText(), String.valueOf(passwordInput.getPassword()));
-				this.inputPanel.setVisible(false);
-				this.add(manageButton, BorderLayout.EAST);
-				this.add(settingsButton, BorderLayout.WEST);
-				//ClientApplication.getInstance().setToken(token);
-				//System.out.println(token);
-				ClientApplication.getInstance().getSecondaryView().init();
+			//String token = userServiceRestClient
+			//		.registerUser(usernameInput.getText(), String.valueOf(passwordInput.getPassword()));
+			//ClientApplication.getInstance().setToken(token);
+			//System.out.println(token);
+			this.add(manageButton, BorderLayout.EAST);
+			this.add(settingsButton, BorderLayout.WEST);
+			loginButton.setVisible(false);
+			registerUserButton.setVisible(false);
+			registerManagerButton.setVisible(false);
+			inputPanel.setVisible(false);
+			//((ReservationView) ClientApplication.getInstance().getSecondaryView()).init();
+		});
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		registerManagerButton = new JButton("Register Manager");
+		this.add(registerManagerButton, BorderLayout.CENTER);
+		registerManagerButton.addActionListener((event) -> {
+
+			//String token = userServiceRestClient
+			//		.registerManager(usernameInput.getText(), String.valueOf(passwordInput.getPassword()));
+			//ClientApplication.getInstance().setToken(token);
+			//System.out.println(token);
+			this.add(manageButton, BorderLayout.EAST);
+			this.add(settingsButton, BorderLayout.WEST);
+			loginButton.setVisible(false);
+			registerUserButton.setVisible(false);
+			registerManagerButton.setVisible(false);
+			inputPanel.setVisible(false);
+			//((ReservationView) ClientApplication.getInstance().getSecondaryView()).init();
 		});
 
 		settingsButton = new JButton("Settings");
 		settingsButton.addActionListener((event) -> {
 
 			try {
-				ClientApplication.getInstance().getSecondaryView().init();
-				//String token = userServiceRestClient
-				//	.login(usernameInput.getText(), String.valueOf(passwordInput.getPassword()));
-				this.setVisible(true);
-				//ClientApplication.getInstance().setToken(token);
-				//System.out.println(token);
-				ClientApplication.getInstance().getSecondaryView().init();
-
+				ClientApplication.getInstance().getSecondaryView().setVisible(false);
+				ClientApplication.getInstance().setSecondaryView(new ManagmentView());
+				((ManagmentView) ClientApplication.getInstance().getSecondaryView()).init();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -98,14 +112,13 @@ public class LoginView extends JPanel {
 		manageButton.addActionListener((event) -> {
 
 			try {
-				ClientApplication.getInstance().getSecondaryView().init();
-				//String token = userServiceRestClient
-				//	.login(usernameInput.getText(), String.valueOf(passwordInput.getPassword()));
-				this.setVisible(true);
-				//ClientApplication.getInstance().setToken(token);
-				//System.out.println(token);
-				ClientApplication.getInstance().getSecondaryView().init();
-
+				ClientApplication.getInstance().getSecondaryView().setVisible(false);
+				ClientApplication.getInstance().setSecondaryView(new ManagmentView());
+				((ManagmentView) ClientApplication.getInstance().getSecondaryView()).init();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
